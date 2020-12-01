@@ -1,0 +1,26 @@
+{
+  "name": "repografia_senai_back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denison3965/Repografia_SENAI_BACK-END.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denison3965/Repografia_SENAI_BACK-END/issues"
+  },
+  "homepage": "https://github.com/denison3965/Repografia_SENAI_BACK-END#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
