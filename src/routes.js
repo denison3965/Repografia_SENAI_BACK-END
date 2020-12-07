@@ -9,6 +9,8 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const Fornecedor = require('./model/Fornecedor')
+
 
 // Verificar o JWT
 function verifyJWT(req, res, next){
@@ -35,8 +37,14 @@ function verifyJWT(req, res, next){
             res.json([{id: req.userId ,nome:'luiz',auth: true, adm: true}]);
     })
 
-    router.get('/denison', ( req, res ) => {
-        res.send("Esta tudo funcionando")
+    router.post('/add-fornecedor', ( req, res ) => {
+
+        
+        Fornecedor.create({
+            id_fornecedor: req.body.id,
+            nome: req.body.nome
+
+        }).then(() => res.status(200).json({status: 'fornecedor criado com sucesso'})).catch((err) => res.status(500).json({status: 'Erro ao cadastrar fornecedor'}) )
 
     })
 
