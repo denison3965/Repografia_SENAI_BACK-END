@@ -28,7 +28,11 @@ function verifyJWT(req, res, next){
     router.get('/teste', verifyJWT, ( req, res, next ) => {
         // res.send("Esta tudo funcionando")
         console.log("Esta tudo funcionando");
-        res.json([{id:1,nome:'luiz',auth: true}]);
+
+        //Se o usuario for Adiministrador envias isso
+            // res.json([{id:1,nome:'luiz',auth: true, adm: true}]);
+        //else    
+            res.json([{id: req.userId ,nome:'luiz',auth: true, adm: true}]);
     })
 
     router.get('/denison', ( req, res ) => {
