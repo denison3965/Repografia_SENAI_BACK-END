@@ -4,7 +4,7 @@ const Sequelize = require('sequelize')
 //conexão  com banco de dados mysql
 //importando sequelize e fazendo uma nova instância do objeto para a conexão 
 //passando paramentros para o construtor o nome do banco de dados, o nome do usuario e senha
-const sequelize = new Sequelize('repografia', 'root', '123123',{
+const sequelize = new Sequelize('repografia', 'deni', '123123',{
     host: "localhost",
     dialect: 'mysql',
     define:{
