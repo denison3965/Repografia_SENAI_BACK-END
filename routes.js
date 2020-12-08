@@ -61,8 +61,4 @@ function verifyJWT(req, res, next){
         res.json({ auth: false, token: null });
     })
 
-    
-
-
-
 module.exports = router    
