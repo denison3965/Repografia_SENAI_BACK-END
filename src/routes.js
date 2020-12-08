@@ -9,7 +9,6 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-const Fornecedor = require('./model/Fornecedor')
 
 
 // Verificar o JWT

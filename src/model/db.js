@@ -16,7 +16,6 @@ conn.connect(
             throw err;
         }else{
             console.log("Conexão estabelecida");
-            queryDatabase();
         }
     }
 )
