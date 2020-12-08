@@ -57,6 +57,10 @@ function verifyJWT(req, res, next){
         res.status(203).json({message: 'Login invalido!'});
     })
 
+    router.post('/cadastro', (req, res, next) => {
+        
+    })
+
     router.post('/logout', function(req, res) {
         res.json({ auth: false, token: null });
     })
