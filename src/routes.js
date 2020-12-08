@@ -43,7 +43,7 @@ function verifyJWT(req, res, next){
     //Exemplo Excluir depois
     router.post('/add-fornecedor', ( req, res ) => {
 
-       mysql.getCo+nnection((error, conn) => {
+       mysql.getConnection((error, conn) => {
 
            if(error) res.status(500).send({error: error})
 
@@ -68,6 +68,35 @@ function verifyJWT(req, res, next){
        
 
     })
+
+    //Cadastro
+    router.post('/cadastro', ( req, res ) => {
+
+        mysql.getConnection((error, conn) => {
+
+            if(error) res.status(500).send({error: error})
+ 
+            conn.query(
+                'INSERT INTO fornecedor (id_fornecedor, nome) VALUES (?,?)',
+                [5, 'Meu teste com MySql'],
+                (error, resultado, field) => {
+                    conn.release()
+ 
+                    if(error) {
+                        return res.status(500).send({
+                            error: error,
+                            response: null
+                        })
+                    }
+                    res.status(201).send({
+                        mesagem: 'Funcionario inserido com sucesso',
+                    })
+                }
+            )
+        })
+        
+    })
+
 
     //autenticação
     router.post('/login', Login_controller.post)
