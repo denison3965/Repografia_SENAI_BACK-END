@@ -7,8 +7,7 @@ require("dotenv-safe").config();
 const jwt = require('jsonwebtoken');
 
 
-
-const Fornecedor = require('./model/Fornecedor')
+const mysql = require('./model/db').pool
 
 //Chamando as controllers
 const Login_controller = require('./controllers/Login-controller')
@@ -44,12 +43,29 @@ function verifyJWT(req, res, next){
     //Exemplo Excluir depois
     router.post('/add-fornecedor', ( req, res ) => {
 
-        
-        Fornecedor.create({
-            id_fornecedor: req.body.id,
-            nome: req.body.nome
+       mysql.getCo+nnection((error, conn) => {
 
-        }).then(() => res.status(200).json({status: 'fornecedor criado com sucesso'})).catch((err) => res.status(500).json({status: 'Erro ao cadastrar fornecedor'}) )
+           if(error) res.status(500).send({error: error})
+
+           conn.query(
+               'INSERT INTO fornecedor (id_fornecedor, nome) VALUES (?,?)',
+               [5, 'Meu teste com MySql'],
+               (error, resultado, field) => {
+                   conn.release()
+
+                   if(error) {
+                       return res.status(500).send({
+                           error: error,
+                           response: null
+                       })
+                   }
+                   res.status(201).send({
+                       mesagem: 'Fornecedor inserido com sucesso',
+                   })
+               }
+           )
+       })
+       
 
     })
 
