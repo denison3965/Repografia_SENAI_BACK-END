@@ -165,14 +165,13 @@ router.post('/add-requisicao', (req, res) => {
         
     })
 
+})
+
     //Router para editar a senha
     router.put('/editarSenha', EditarSenha_controller.put)
 
     //Router para inserir dados na tabela funcionario
-    router.post('/funcionarios', Funcionarios_controller.post )
-
-
-})
+    router.post('/addfuncionarios', Funcionarios_controller.post)
 
 //autenticação
 router.post('/login', Login_controller.post)
