@@ -11,27 +11,29 @@ exports.put = (req, res) => {
     mysql.getConnection((error, conn) => {
         if(error) res.status(500).send({error: error})
 
-        
-
-        conn.query(
-         `UPDATE funcionarios
-           SET senha   = ?
-           WHERE id_funcionarios = ? `,
-
-           [req.body.senha, req.body.id_funcionarios],
-
-           (error, resultado, field) => {
-            conn.release()
-            if(error) {
-                return res.status(500).send({
-                    error: error,
-                    response: null
-                })
+            var senha = "senai115"
+            if(req.body.senha != senha){
+                senhaPadrao = req.body.senha
             }
-            res.status(201).send({
-                mesagem: 'Senha alterada com sucesso',
-            })
-        }
-        )
+            conn.query(
+                `UPDATE funcionarios
+                  SET senha   = ?
+                  WHERE nif   = ? `,
+       
+                  [senha, req.body.nif],
+       
+                  (error, resultado, field) => {
+                   conn.release()
+                   if(error) {
+                       return res.status(500).send({
+                           error: error,
+                           response: null
+                       })
+                   }
+                   res.status(201).send({
+                       mesagem: 'Senha alterada com sucesso',
+                   })
+               }
+               )
     })
 }

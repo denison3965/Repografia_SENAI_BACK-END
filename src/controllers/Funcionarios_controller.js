@@ -15,10 +15,8 @@ exports.post = (req, res) => {
     if(req.body.telefone != null ){
         telefone = req.body.telefone
     }
-
-    
     conn.query(
-        'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao,id_cargo) VALUES (?,?,?,?,?,?,?,?,?,?)',
+        'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao) VALUES (?,?,?,?,?,?,?,?,?,?)',
         [req.body.nif, req.body.nome, req.body.sobrenome,req.body.email, telefone,req.body.data_criacao,req.body.senha,req.body.administrativo,req.body.situacao, req.body.data_suspensao],
         (error, resultado, field) => {
             conn.release()
