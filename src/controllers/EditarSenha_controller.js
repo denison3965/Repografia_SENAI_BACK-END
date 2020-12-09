@@ -11,6 +11,8 @@ exports.put = (req, res) => {
     mysql.getConnection((error, conn) => {
         if(error) res.status(500).send({error: error})
 
+        
+
         conn.query(
          `UPDATE funcionarios
            SET senha   = ?
