@@ -16,8 +16,13 @@ exports.post = (req, res) => {
         telefone = req.body.telefone
     }
     conn.query(
+<<<<<<< HEAD
         'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao) VALUES (?,?,?,?,?,?,?,?,?,?)',
         [req.body.nif, req.body.nome, req.body.sobrenome,req.body.email, telefone,req.body.data_criacao,req.body.senha,req.body.administrativo,req.body.situacao, req.body.data_suspensao],
+=======
+        'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao,id_cargo) VALUES (?,?,?,?,?,?,?,?,?,?)',
+        [req.body.nif, req.body.nome, req.body.sobrenome,req.body.email, telefone,req.body.data_criacao,req.body.senha,req.body.administrativo,req.body.situacao, req.body.id_cargo ],
+>>>>>>> 3d08341701ae710a3bd12b5745892294bc5ad2c8
         (error, resultado, field) => {
             conn.release()
 
@@ -31,11 +36,11 @@ exports.post = (req, res) => {
                 mesagem: 'Funcionario inserido com sucesso',
                 id_funcionarios: resultado.insertId
             })
+            console.log(mesagem)
         }
     )
 
     })
 }
-
 
 

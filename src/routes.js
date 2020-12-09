@@ -136,42 +136,24 @@ router.post('/add-requisicao', (req, res) => {
             }
         )
     })
+    
 
-    //Cadastro
-    router.post('/cadastro', ( req, res ) => {
-
-        mysql.getConnection((error, conn) => {
-
-            if(error) res.status(500).send({error: error})
- 
-            conn.query(
-                'INSERT INTO fornecedor (id_fornecedor, nome) VALUES (?,?)',
-                [5, 'Meu teste com MySql'],
-                (error, resultado, field) => {
-                    conn.release()
- 
-                    if(error) {
-                        return res.status(500).send({
-                            error: error,
-                            response: null
-                        })
-                    }
-                    res.status(201).send({
-                        mesagem: 'Funcionario inserido com sucesso',
-                    })
-                }
-            )
-        })
-        
-    })
 
 })
 
+<<<<<<< HEAD
     //Router para editar a senha
     router.put('/editarSenha', EditarSenha_controller.put)
 
     //Router para inserir dados na tabela funcionario
     router.post('/addfuncionarios', Funcionarios_controller.post)
+=======
+//Router para editar a senha
+router.put('/editarSenha', EditarSenha_controller.put)
+
+//Router para inserir dados na tabela funcionario
+router.post('/funcionarios', Funcionarios_controller.post )
+>>>>>>> 3d08341701ae710a3bd12b5745892294bc5ad2c8
 
 //autenticação
 router.post('/login', Login_controller.post)
