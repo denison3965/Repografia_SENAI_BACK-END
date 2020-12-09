@@ -5,8 +5,6 @@ const app = express();
 
 require("dotenv-safe").config();
 const jwt = require('jsonwebtoken');
-
-
 const mysql = require('./model/db').pool
 
 //Chamando as controllers
@@ -14,6 +12,8 @@ const Login_controller = require('./controllers/Login-controller')
 const Logout_controller = require('./controllers/Logout-controller')
 const verifyJWT_controller = require('./controllers/VerifyJWT-controller')
 
+const EditarSenha_controller = require('./controllers/EditarSenha_controller')
+const Funcionarios_controller = require('./controllers/Funcionarios_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -136,6 +136,40 @@ router.post('/add-requisicao', (req, res) => {
             }
         )
     })
+
+    //Cadastro
+    router.post('/cadastro', ( req, res ) => {
+
+        mysql.getConnection((error, conn) => {
+
+            if(error) res.status(500).send({error: error})
+ 
+            conn.query(
+                'INSERT INTO fornecedor (id_fornecedor, nome) VALUES (?,?)',
+                [5, 'Meu teste com MySql'],
+                (error, resultado, field) => {
+                    conn.release()
+ 
+                    if(error) {
+                        return res.status(500).send({
+                            error: error,
+                            response: null
+                        })
+                    }
+                    res.status(201).send({
+                        mesagem: 'Funcionario inserido com sucesso',
+                    })
+                }
+            )
+        })
+        
+    })
+
+    //Router para editar a senha
+    router.put('/editarSenha', EditarSenha_controller.put)
+
+    //Router para inserir dados na tabela funcionario
+    router.post('/funcionarios', Funcionarios_controller.post )
 
 
 })
