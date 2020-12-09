@@ -20,8 +20,8 @@ exports.post = (req, res) => {
         bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
             if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }
             conn.query(
-                'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, perfil, situacao, data_suspensao) VALUES (?,?,?,?,?,?,?,?,?,?)',
-                [req.body.nif, req.body.nome, req.body.sobrenome, req.body.email, telefone, req.body.data_criacao, req.body.senha, req.body.perfil, req.body.situacao, req.body.data_suspensao],
+                'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao) VALUES (?,?,?,?,?,?,?,?,?,?)',
+                [req.body.nif, req.body.nome, req.body.sobrenome, req.body.email, telefone, req.body.data_criacao, hash, req.body.administrativo, req.body.situacao, req.body.data_suspensao],
                 (error, resultado, field) => {
                     conn.release()
 

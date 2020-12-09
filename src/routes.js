@@ -136,6 +136,7 @@ router.post('/add-requisicao', (req, res) => {
             }
         )
     })
+    })
 
     //Cadastro
     router.post('/cadastro', ( req, res ) => {
@@ -172,7 +173,7 @@ router.post('/add-requisicao', (req, res) => {
     router.post('/funcionarios', Funcionarios_controller.post )
 
 
-})
+
 
 //autenticação
 router.post('/login', Login_controller.post)
