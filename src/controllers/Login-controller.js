@@ -30,7 +30,7 @@ exports.post = (req, res, next) => {
                     })
                 }
 
-                
+
                 if (result[0] === undefined) {
                     return res.status(203).json({message: 'Usuario nao encontado na base de dados'})
                 }
@@ -43,6 +43,7 @@ exports.post = (req, res, next) => {
                 //auth ok
                 const nif = result[0].nif; //esse id viria do banco de dados
                 const isAd = result[0].administrativo;
+                console.log(isAd)
                 const token = jwt.sign({ nif }, process.env.SECRET, {
                     expiresIn: 300 // expires in 5min
                 });
