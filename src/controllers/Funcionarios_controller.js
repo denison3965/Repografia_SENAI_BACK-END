@@ -7,7 +7,10 @@ const mysql = require('../model/db').pool
 const bcrypt = require('bcrypt');
 
 
-exports.post = (req, res) => {
+exports.post = (req, res) => { 
+
+    console.log("funcionario controller")
+
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 
@@ -22,7 +25,7 @@ exports.post = (req, res) => {
             if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }
             conn.query(
                 'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao) VALUES (?,?,?,?,?,?,?,?,?,?)',
-                [req.body.nif, req.body.nome, req.body.sobrenome, req.body.email, telefone, req.body.data_criacao, hash, req.body.administrativo, req.body.situacao, req.body.data_suspensao],
+                [req.body.nif, req.body.nome, req.body.sobrenome, req.body.email, req.body.telefone, req.body.data_criacao, req.body.senha, req.body.administrativo, req.body.situacao, req.body.data_suspensao],
                 (error, resultado, field) => {
                     conn.release()
         
