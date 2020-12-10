@@ -1,9 +1,8 @@
 const express = require('express')
-const router = express.Router()
 const app = express(); 
 require("dotenv-safe").config();
-const jwt = require('jsonwebtoken');
 const mysql = require('../model/db').pool
+const bcrypt = require('bcrypt');
 
 
 
@@ -11,17 +10,15 @@ exports.put = (req, res) => {
     mysql.getConnection((error, conn) => {
         if(error) res.status(500).send({error: error})
 
-            var senha = "senai115"
-            if(req.body.senha != senha){
-                senhaPadrao = req.body.senha
-            }
+        bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
+            if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }
             conn.query(
                 `UPDATE funcionarios
                   SET senha   = ?
                   WHERE nif   = ? `,
-       
-                  [senha, req.body.nif],
-       
+            
+                  [hash, req.body.nif],
+            
                   (error, resultado, field) => {
                    conn.release()
                    if(error) {
@@ -35,5 +32,13 @@ exports.put = (req, res) => {
                    })
                }
                )
+        })
     })
 }
+
+
+
+
+
+
+
