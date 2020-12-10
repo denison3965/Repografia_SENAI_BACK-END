@@ -14,6 +14,7 @@ const verifyJWT_controller = require('./controllers/VerifyJWT-controller')
 
 const EditarSenha_controller = require('./controllers/EditarSenha_controller')
 const Funcionarios_controller = require('./controllers/Funcionarios_controller')
+const UserInfo_controller = require('./controllers/UserInfo_controller') 
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -140,6 +141,9 @@ router.post('/add-requisicao', (req, res) => {
 
 
 })
+
+//Rota para pegar informacoes de um usuario pelo nif
+router.get('/buscar-user-nif/:nif', UserInfo_controller.get)
 
 //Router para editar a senha
 router.put('/editarSenha', EditarSenha_controller.put)
