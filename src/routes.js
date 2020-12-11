@@ -18,6 +18,7 @@ const UserInfo_controller = require('./controllers/UserInfo_controller')
 const ResetarSenha_controller = require('./controllers/ResetarSenha_controller')
 const AddRequisicao_controller = require('./controllers/Addrequisicao_controller')
 const ExcluirFuncionarios_controller = require('./controllers/ExcluirFuncionarios_controller')
+const RestaurarFuncionarios_controller = require('./controllers/RestaurarFuncionarios_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -81,6 +82,8 @@ router.post('/add-fornecedor', (req, res) => {
 
     //Router para excluir funcionarios
     router.put('/excluirfuncionarios', ExcluirFuncionarios_controller.put)
+    //Rota para restaurar o funcionario
+    router.put('/restaurarfuncionario', RestaurarFuncionarios_controller.put)
 
 
 //autenticação
