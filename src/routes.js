@@ -17,6 +17,7 @@ const Funcionarios_controller = require('./controllers/Funcionarios_controller')
 const UserInfo_controller = require('./controllers/UserInfo_controller') 
 const ResetarSenha_controller = require('./controllers/ResetarSenha_controller')
 const AddRequisicao_controller = require('./controllers/Addrequisicao_controller')
+const ExcluirFuncionarios_controller = require('./controllers/ExcluirFuncionarios_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -77,6 +78,9 @@ router.post('/add-fornecedor', (req, res) => {
 
     //Rota para pegar informacoes de um usuario pelo nif
     router.get('/buscar-user-nif/:nif', UserInfo_controller.get)
+
+    //Router para excluir funcionarios
+    router.put('/excluirfuncionarios', ExcluirFuncionarios_controller.put)
 
 
 //autenticação
