@@ -14,6 +14,7 @@ const verifyJWT_controller = require('./controllers/VerifyJWT-controller')
 
 const EditarSenha_controller = require('./controllers/EditarSenha_controller')
 const Funcionarios_controller = require('./controllers/Funcionarios_controller')
+const UserInfo_controller = require('./controllers/UserInfo_controller') 
 const ResetarSenha_controller = require('./controllers/ResetarSenha_controller')
 const AddRequisicao_controller = require('./controllers/Addrequisicao_controller')
 
@@ -73,6 +74,10 @@ router.post('/add-fornecedor', (req, res) => {
 
     //router para resetar a senha
     router.put('/resetarSenha', ResetarSenha_controller.put)
+
+    //Rota para pegar informacoes de um usuario pelo nif
+    router.get('/buscar-user-nif/:nif', UserInfo_controller.get)
+
 
 //autenticação
 router.post('/login', Login_controller.post)
