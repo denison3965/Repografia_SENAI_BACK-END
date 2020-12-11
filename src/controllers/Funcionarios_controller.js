@@ -11,12 +11,13 @@ exports.post = (req, res) => {
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 
-        //sentando o numero do senai padrão caso o usuario não coloque numero
+        //setando o numero do senai padrão caso o usuario não coloque numero
         var telefone = '01010101'
         if (req.body.telefone != null) {
             telefone = req.body.telefone
+            console.log(req.body.telefone)
         }
-
+        
         bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
             if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }
             conn.query(
