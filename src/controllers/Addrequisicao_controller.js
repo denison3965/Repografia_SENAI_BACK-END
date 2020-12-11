@@ -20,10 +20,18 @@ exports.post = (req, res) => {
 
             conn.query('SELECT id_requisicao from requisicao ORDER BY id_requisicao DESC limit 1',
                 (error, resultado, field) =>{
+
                     
-                    num = resultado
-                    num =  num[0].id_requisicao
-                    num = num.toString()
+                    
+                    let num = resultado
+
+                    try { 
+                        num = num[0].id_requisicao 
+                        num = num.toString()
+                    } catch {
+                        num = undefined
+                    }
+                    
 
                     console.log(num)    
 
@@ -37,17 +45,17 @@ exports.post = (req, res) => {
                     else
                     {
                         console.log("estou aqui 2")
-                        num = 1
-                        numero_requisicao = parseInt(`${year}${num}`)
+                        let default_num = 1
+                        numero_requisicao = parseInt(`${year}${default_num}`)
                     }
 
                 })
 
         conn.query(
-            'INSERT INTO requisicao (id_requisicao, NIF, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega ) VALUES (?,?,?,?,?,?,?,?)',
+            'INSERT INTO requisicao (id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega ) VALUES (?,?,?,?,?,?,?,?)',
             [
                 numero_requisicao, 
-                511128,
+                req.body.nif,
                 req.body.paginas,
                 req.body.copias,
                 req.body.totalPaginas,
