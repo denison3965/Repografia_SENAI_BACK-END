@@ -17,6 +17,7 @@ const Funcionarios_controller = require('./controllers/Funcionarios_controller')
 const UserInfo_controller = require('./controllers/UserInfo_controller') 
 const ResetarSenha_controller = require('./controllers/ResetarSenha_controller')
 const AddRequisicao_controller = require('./controllers/Addrequisicao_controller')
+const RestaurarFuncionarios_controller = require('./controllers/RestaurarFuncionarios_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -77,6 +78,9 @@ router.post('/add-fornecedor', (req, res) => {
 
     //Rota para pegar informacoes de um usuario pelo nif
     router.get('/buscar-user-nif/:nif', UserInfo_controller.get)
+
+    //Rota para restaurar o funcionario
+    router.put('/restaurarfuncionario', RestaurarFuncionarios_controller.put)
 
 
 //autenticação
