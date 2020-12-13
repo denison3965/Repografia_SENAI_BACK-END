@@ -12,7 +12,7 @@ exports.get = (req , res) => {
     mysql.getConnection((error, conn) => {
         if(error) res.status(500).res.send({error: error})
 
-        conn.query('SELECT nif, nome, sobrenome, email, telefone, data_criacao, situacao, data_suspensao, id_cargo FROM funcionarios WHERE nif = ?',[req.params.nif] , (error, result, field) => {
+        conn.query('SELECT nif, nome, sobrenome, email, telefone, data_criacao, situacao, data_suspensao, id_cargo, administrativo FROM funcionarios WHERE nif = ?',[req.params.nif] , (error, result, field) => {
             conn.release()
             if (error) {
                 return res.status(500).send({
