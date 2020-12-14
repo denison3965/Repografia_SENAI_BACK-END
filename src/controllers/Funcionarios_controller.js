@@ -21,7 +21,7 @@ exports.post = (req, res) => {
             console.log(req.body.telefone)
         }
         
-        bcrypt.hash(req.body.senha, 10, (errBcrypt, hash) => {
+        bcrypt.hash("senai115", 10, (errBcrypt, hash) => {
             if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }
             conn.query(
                 'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao) VALUES (?,?,?,?,?,?,?,?,?,?)',
