@@ -2,8 +2,8 @@ const mysql = require('mysql8')
 
 var pool = mysql.createPool({
     host: 'localhost',
-    user: 'root',
-    password: '1243123',
+    user: 'deni',
+    password: '123123',
     database: 'repografia'
 })
 
