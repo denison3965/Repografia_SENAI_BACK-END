@@ -45,7 +45,7 @@ exports.post = (req, res, next) => {
                 const isAd = result[0].administrativo;
                 console.log(isAd)
                 const token = jwt.sign({ nif }, process.env.SECRET, {
-                    expiresIn: 5555 // expires in 5min
+                    expiresIn: 100000 // expires in 5min
                 });
                 return res.status(200).json({ auth: true, token: token, isAd : isAd, message: 'Login valido' });
                 }

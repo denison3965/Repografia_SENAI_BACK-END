@@ -15,11 +15,12 @@ exports.post = (req, res) => {
         if (error) res.status(500).send({ error: error })
 
         //setando o numero do senai padrão caso o usuario não coloque numero
-        var telefone = '01010101'
+        let telefone = '01010101'
         if (req.body.telefone != null) {
             telefone = req.body.telefone
             console.log(req.body.telefone)
         }
+
         
         bcrypt.hash("senai115", 10, (errBcrypt, hash) => {
             if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }

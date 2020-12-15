@@ -21,6 +21,8 @@ const GetFuncionarios_controller = require('./controllers/GetFuncionarios_contro
 const ExcluirFuncionarios_controller = require('./controllers/ExcluirFuncionarios_controller')
 const RestaurarFuncionarios_controller = require('./controllers/RestaurarFuncionarios_controller')
 const GetCargos_controller = require('./controllers/GetCargos_controller')
+const EditarFuncionario_controller = require('./controllers/EditarFuncionario_controller')
+const PegarDepartamento_controller = require('./controllers/PegarDepartamento_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -91,8 +93,14 @@ router.post('/add-fornecedor', (req, res) => {
     //Rota para restaurar o funcionario
     router.put('/restaurarfuncionario', RestaurarFuncionarios_controller.put)
 
-    //Rota ppara pegar a lista de cargos
+    //Rota para pegar a lista de cargos
     router.get('/pegar-cargos', GetCargos_controller.get)
+
+    //Rota para editar funcionario
+    router.put('/editar-funcionario', EditarFuncionario_controller.put)
+
+    //Rota para pegar lista de departamentos
+    router.get('/pegar-departamento', PegarDepartamento_controller.get)
 
 
 //autenticação
