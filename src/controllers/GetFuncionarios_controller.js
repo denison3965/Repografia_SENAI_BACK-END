@@ -11,7 +11,7 @@ exports.get = (req , res) => {
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 
-        conn.query('SELECT id_funcionarios, nif, nome, sobrenome, email, telefone, data_criacao, administrativo, situacao, data_suspensao, id_cargo FROM funcionarios',
+        conn.query('SELECT id_funcionarios, nif, funcionarios.nome, sobrenome, email, telefone, data_criacao, administrativo, situacao, data_suspensao, funcionarios.id_cargo, cargo_funcionario.nome_cargo  FROM funcionarios INNER JOIN cargo_funcionario ON funcionarios.id_cargo = cargo_funcionario.id_cargo',
             (err, result) => {
                 conn.release()
 
@@ -26,3 +26,4 @@ exports.get = (req , res) => {
             })
     })
 }
+
