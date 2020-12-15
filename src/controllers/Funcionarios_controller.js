@@ -16,7 +16,7 @@ exports.post = (req, res) => {
 
         //setando o numero do senai padrão caso o usuario não coloque numero
         let telefone = '01010101'
-        if (req.body.telefone != null || req.body.telefone != undefined ) {
+        if (req.body.telefone != null) {
             telefone = req.body.telefone
             console.log(req.body.telefone)
         }
