@@ -34,6 +34,7 @@ exports.post = (req, res) => {
                 }
 
                 if (nif != undefined) {
+                   res.send("OBS: Funcionario existente !!")
                 }
                 else {
                     //setando o numero do senai padrão caso o usuario não coloque numero
@@ -56,14 +57,13 @@ exports.post = (req, res) => {
                                         response: null
                                     })
                                 }
-                                res.status(201).send({
-                                    mesagem: 'Funcionario cadastrado com sucesso!!',
-                                    id_funcionarios: resultado.insertId
-                                })
+                                res.status(201).send("Funcionario cadastrado com sucesso !!")
                             }
                         )
 
                     })
+
+                   
                 }
             }
 
