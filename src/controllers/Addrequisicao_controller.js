@@ -30,10 +30,7 @@ exports.post = (req, res) => {
                         num = num.toString()
                     } catch {
                         num = undefined
-                    }
-                    
-
-                    console.log(num)    
+                    }   
 
                     if(num != null) 
                     {
@@ -54,7 +51,6 @@ exports.post = (req, res) => {
 
                     conn.query('SELECT id_funcionarios FROM funcionarios WHERE nif = ?', [req.body.nif], (error, resultado, field) => {
                         let Id_funcionario = resultado[0].id_funcionarios
-                        console.log("ola aquiii" + Id_funcionario)
 
                         conn.query(
                             'INSERT INTO requisicao (id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega, id_formato, id_suporte, id_funcionarios) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
@@ -76,14 +72,9 @@ exports.post = (req, res) => {
                                 
                 
                                 if (error) {
-                                    return res.status(500).send({
-                                        error: error,
-                                        response: null
-                                    })
+                                    return res.status(500).send('Obs: rro ao fazer requisição !!')
                                 }
-                                res.status(201).send({
-                                    mesagem: 'Requisicao criada com sucesso !!!',
-                                })
+                                res.status(201).send('Requisição criada com sucesso !!!')
                             }
     
                         )

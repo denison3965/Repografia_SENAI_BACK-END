@@ -24,10 +24,9 @@ exports.put = (req, res) => {
                         })
                     }
 
-                    
                     //comparar se a senha atual é igual a senha do banco de dados
                    let verificar_senha =  await bcrypt.compareSync(req.body.senhaAtual, resultado[0].senha)
-
+                        
                    if(verificar_senha == true){
                       //verificar se a nova senha é igual ao confimar senha 
                       if(req.body.novaSenha === req.body.confirmarSenha){

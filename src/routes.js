@@ -102,6 +102,8 @@ router.post('/add-fornecedor', (req, res) => {
     //Rota para pegar lista de departamentos
     router.get('/pegar-departamento', PegarDepartamento_controller.get)
 
+    
+
 
 //autenticação
 router.post('/login', Login_controller.post)

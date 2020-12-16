@@ -37,17 +37,11 @@ exports.post = (req, res) => {
                    res.send("OBS: Funcionario existente !!")
                 }
                 else {
-                    //setando o numero do senai padrão caso o usuario não coloque numero
-                    let telefone = '01010101'
-                    if (req.body.telefone != null) {
-                        telefone = req.body.telefone
-                        console.log(req.body.telefone)
-                    }
                     bcrypt.hash("senai115", 10, (errBcrypt, hash) => {
                         if (errBcrypt) { return res.status(500).send({ error: errorBcrypt }) }
                         conn.query(
                             'INSERT INTO funcionarios ( nif, nome, sobrenome, email, telefone ,data_criacao, senha, administrativo, situacao, data_suspensao, id_cargo) VALUES (?,?,?,?,?,?,?,?,?,?,?)',
-                            [req.body.nif, req.body.nome, req.body.sobrenome, req.body.email, telefone, req.body.data_criacao, hash, req.body.administrativo, req.body.situacao, req.body.data_suspensao, req.body.id_cargo],
+                            [req.body.nif, req.body.nome, req.body.sobrenome, req.body.email, req.body.telefone, req.body.data_criacao, hash, req.body.administrativo, req.body.situacao, req.body.data_suspensao, req.body.id_cargo],
                             (error, resultado, field) => {
                                 conn.release()
 
