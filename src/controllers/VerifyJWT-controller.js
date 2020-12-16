@@ -18,12 +18,13 @@ exports.get = ( req, res, next ) => {
     console.log("Esta tudo funcionando");
 
     mysql.getConnection((err, conn) => {
-        conn.release()
+        
         if (err) res.status(500).send({ error: err })
 
 
         conn.query('SELECT administrativo FROM funcionarios WHERE nif = ?', [req.nif],
         (error, resultado, field) => {
+            conn.release()
             let isAdm = resultado[0].administrativo
             
             if(isAdm == 'sim'){
