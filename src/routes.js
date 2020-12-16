@@ -23,6 +23,8 @@ const RestaurarFuncionarios_controller = require('./controllers/RestaurarFuncion
 const GetCargos_controller = require('./controllers/GetCargos_controller')
 const EditarFuncionario_controller = require('./controllers/EditarFuncionario_controller')
 const PegarDepartamento_controller = require('./controllers/PegarDepartamento_controller')
+const PegarFornecedor_controller = require('./controllers/PegarFornecedor_controller')
+const PegarRequisicao_controller = require('./controllers/PegarRequisicao_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -39,35 +41,7 @@ function verifyJWT(req, res, next) {
 }
 
 //Routers
-router.get('/teste', verifyJWT, verifyJWT_controller.get)
-
-
-//Router para adicionar um fornecedor
-router.post('/add-fornecedor', (req, res) => {
-
-    mysql.getConnection((error, conn) => {
-
-        if (error) res.status(500).send({ error: error })
-
-        conn.query(
-            'INSERT INTO fornecedor (id_fornecedor, nome) VALUES (?,?)',
-            [req.body.id, req.body.nome],
-            (error, resultado, field) => {
-                conn.release()
-
-                if (error) {
-                    return res.status(500).send({
-                        error: error,
-                        response: null
-                    })
-                }
-                res.status(201).send({
-                    mesagem: 'Fornecedor inserido com sucesso',
-                })
-            }
-        )
-    })
-})
+    router.get('/teste', verifyJWT, verifyJWT_controller.get)
 
     //Router para adicionar uma requisicao
     router.post('/add-requisicao', AddRequisicao_controller.post)
@@ -104,11 +78,16 @@ router.post('/add-fornecedor', (req, res) => {
 
     
 
+    //Rota para trazer o fornecedor
+    router.get('/pegar-fornecedor', PegarFornecedor_controller.get)
 
-//autenticação
-router.post('/login', Login_controller.post)
+    //Rota para pegar a lista de requisicao
+    router.get('/pegar-requisicao', PegarRequisicao_controller.get)
 
-router.post('/logout', Logout_controller.post)
+    //autenticação
+    router.post('/login', Login_controller.post)
+
+    router.post('/logout', Logout_controller.post)
 
 
 
