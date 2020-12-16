@@ -43,7 +43,6 @@ exports.post = (req, res, next) => {
                 //auth ok
                 const nif = result[0].nif; //esse id viria do banco de dados
                 const isAd = result[0].administrativo;
-                console.log(isAd)
                 const token = jwt.sign({ nif }, process.env.SECRET, {
                     expiresIn: 100000 // expires in 5min
                 });
