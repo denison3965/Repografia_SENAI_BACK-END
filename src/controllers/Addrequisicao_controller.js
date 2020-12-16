@@ -56,7 +56,7 @@ exports.post = (req, res) => {
                     console.log("ola aquiii" + Id_funcionario)
 
                     conn.query(
-                        'INSERT INTO requisicao (nome_requisicao ,id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega, id_formato, id_suporte, id_funcionarios) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
+                        'INSERT INTO requisicao (nome_requisicao ,id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega, id_formato, id_suporte, id_funcionarios, id_departamento, id_fornecedor ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                         [
                             req.body.nomeRequisicao,
                             numero_requisicao,
@@ -69,7 +69,9 @@ exports.post = (req, res) => {
                             req.body.dataEntrega,
                             parseInt(req.body.formato),
                             parseInt(req.body.suporte),
-                            parseInt(Id_funcionario)
+                            parseInt(Id_funcionario),
+                            req.body.departamento,
+                            req.body.fornecedor
                         ],
 
                         (error, resultado, field) => {
@@ -95,6 +97,7 @@ exports.post = (req, res) => {
                     })
 
                     res.status(201).send({
+                        numeroReq: numero_requisicao,
                         mesagem: 'Requisicao criada com sucesso !!!',
                     })
 
