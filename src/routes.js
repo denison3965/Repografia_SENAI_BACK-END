@@ -25,6 +25,7 @@ const EditarFuncionario_controller = require('./controllers/EditarFuncionario_co
 const PegarDepartamento_controller = require('./controllers/PegarDepartamento_controller')
 const PegarFornecedor_controller = require('./controllers/PegarFornecedor_controller')
 const PegarRequisicao_controller = require('./controllers/PegarRequisicao_controller')
+const AtualizarFeedback = require('./controllers/AtualizarFeedback_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -76,18 +77,20 @@ function verifyJWT(req, res, next) {
     //Rota para pegar lista de departamentos
     router.get('/pegar-departamento', PegarDepartamento_controller.get)
 
-    
-
     //Rota para trazer o fornecedor
     router.get('/pegar-fornecedor', PegarFornecedor_controller.get)
 
     //Rota para pegar a lista de requisicao
     router.get('/pegar-requisicao', PegarRequisicao_controller.get)
 
+    //Rota para o feedback
+    router.put('/atualizarFeedback', AtualizarFeedback.put)
+
     //autenticação
     router.post('/login', Login_controller.post)
 
     router.post('/logout', Logout_controller.post)
+
 
 
 
