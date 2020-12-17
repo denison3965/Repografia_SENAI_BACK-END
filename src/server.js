@@ -6,10 +6,12 @@ const routers = require('./routes')
 require('dotenv').config()
 const bodyParser = require('body-parser')
 const db = require ('./model/db')
+const morgan = require("morgan")
 
 //Configuration
 app.use(bodyParser.json());
 app.use(cors());
+app.use(morgan("dev"))
 app.use(bodyParser.urlencoded({
     extended: true
 }));
