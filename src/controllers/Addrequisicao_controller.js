@@ -7,11 +7,17 @@ const bcrypt = require('bcrypt');
 
 exports.post = (req, res) => {
     console.log(req.body)
-    mysql.getConnection((error, conn) => {
 
+    mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 
-        //Gerando numero da requisicao
+        //Verificando se os campos necessarios estão preenchidos 
+        if(req.body.nomeRequisicao === '' || req.body.paginas === '' || req.body.copias === '' || req.body.departamento === null || req.body.formato === '' || req.body.suporte === ''){
+            res.send("Obs: Preencha os campos necessarios: Nome da requisição, número de páginas, número de copias, endereço do departamento, formato ou suporte !!")
+         }
+         else{
+            
+         //Gerando numero da requisicao
         //pegar o ultimo numero de registro
         var year = new Date().getFullYear();
 
@@ -22,8 +28,6 @@ exports.post = (req, res) => {
         conn.query('SELECT id_requisicao from requisicao ORDER BY id_requisicao DESC limit 1',
             async (error, result, field) => {
 
-
-
                 let num = result
 
                 try {
@@ -32,9 +36,6 @@ exports.post = (req, res) => {
                 } catch {
                     num = undefined
                 }
-
-
-                console.log(num)
 
                 if (num != null) {
 
@@ -53,9 +54,10 @@ exports.post = (req, res) => {
 
                 conn.query('SELECT id_funcionarios FROM funcionarios WHERE nif = ?', [req.body.nif], (error, resultado, field) => {
                     let Id_funcionario = resultado[0].id_funcionarios
-                    console.log("ola aquiii" + Id_funcionario)
 
                     conn.query(
+
+                     
                         'INSERT INTO requisicao (nome_requisicao ,id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega, id_formato, id_suporte, id_funcionarios, id_departamento, id_fornecedor ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                         [
                             req.body.nomeRequisicao,
@@ -73,39 +75,20 @@ exports.post = (req, res) => {
                             req.body.departamento,
                             req.body.fornecedor
                         ],
-
-                        (error, resultado, field) => {
-
-
-                            console.log(req.body.acabamento)
-
-
-
-                        }
-
                     )
 
                     //Adicionando na tabela de acabamento os acabamentos pedido pela requisicao
                      req.body.acabamento.map((element) => {
 
-
                         conn.query('INSERT INTO acabamento_requisicao (id_acabamento, id_requisicao) VALUES (?, ?)', [element ,numero_requisicao],
                         (error, result, field) => {
 
                         })
-
                     })
-
-                    res.status(201).send({
-                        numeroReq: numero_requisicao,
-                        mesagem: 'Requisicao criada com sucesso !!!',
-                    })
-
-
+                    res.status(201).send('Requisição feita com sucesso !')
                 })
 
             })
-
-
+         }
     })
 }

@@ -80,6 +80,8 @@ function verifyJWT(req, res, next) {
     //Rota para pegar lista de departamentos
     router.get('/pegar-departamento', PegarDepartamento_controller.get)
 
+    
+
     //Rota para trazer o fornecedor
     router.get('/pegar-fornecedor', PegarFornecedor_controller.get)
 
