@@ -6,6 +6,8 @@ const app = express();
 require("dotenv-safe").config();
 const jwt = require('jsonwebtoken');
 const mysql = require('./model/db').pool
+const multer = require('multer')
+const multerConfig = require('./config/multer')
 
 //Chamando as controllers
 const Login_controller = require('./controllers/Login-controller')
@@ -26,6 +28,8 @@ const PegarDepartamento_controller = require('./controllers/PegarDepartamento_co
 const PegarFornecedor_controller = require('./controllers/PegarFornecedor_controller')
 const PegarRequisicao_controller = require('./controllers/PegarRequisicao_controller')
 const AtualizarFeedback = require('./controllers/AtualizarFeedback_controller')
+const PegarRequisicaoPeloNumero_controller = require('./controllers/PegarRequisicaoPeloNumero_controller')
+const Requisicao_controller = require('./controllers/Requisicao_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -85,6 +89,11 @@ function verifyJWT(req, res, next) {
 
     //Rota para o feedback
     router.put('/atualizarFeedback', AtualizarFeedback.put)
+    //Rota para pegar uma requisicao especifia
+    router.get('/pegar-requisicao/:numerorequisicao', PegarRequisicaoPeloNumero_controller.get)
+
+
+    router.post('/file-requisicao', multer(multerConfig).single('file'), Requisicao_controller.post )
 
     //autenticação
     router.post('/login', Login_controller.post)
