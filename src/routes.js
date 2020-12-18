@@ -27,6 +27,7 @@ const EditarFuncionario_controller = require('./controllers/EditarFuncionario_co
 const PegarDepartamento_controller = require('./controllers/PegarDepartamento_controller')
 const PegarFornecedor_controller = require('./controllers/PegarFornecedor_controller')
 const PegarRequisicao_controller = require('./controllers/PegarRequisicao_controller')
+const AtualizarFeedback = require('./controllers/AtualizarFeedback_controller')
 const PegarRequisicaoPeloNumero_controller = require('./controllers/PegarRequisicaoPeloNumero_controller')
 const Requisicao_controller = require('./controllers/Requisicao_controller')
 const CriarPDF_controller = require('./controllers/CriarPDF_controller')
@@ -82,14 +83,14 @@ function verifyJWT(req, res, next) {
     //Rota para pegar lista de departamentos
     router.get('/pegar-departamento', PegarDepartamento_controller.get)
 
-    
-
     //Rota para trazer o fornecedor
     router.get('/pegar-fornecedor', PegarFornecedor_controller.get)
 
     //Rota para pegar a lista de requisicao
     router.get('/pegar-requisicao', PegarRequisicao_controller.get)
 
+    //Rota para o feedback
+    router.put('/atualizarFeedback', AtualizarFeedback.put)
     //Rota para pegar uma requisicao especifia
     router.get('/pegar-requisicao/:numerorequisicao', PegarRequisicaoPeloNumero_controller.get)
 
@@ -105,6 +106,7 @@ function verifyJWT(req, res, next) {
     router.post('/login', Login_controller.post)
 
     router.post('/logout', Logout_controller.post)
+
 
 
 
