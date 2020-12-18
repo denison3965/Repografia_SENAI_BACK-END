@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta class="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+        <style>
+          .Container{
+              font-size: 10px;
+          }
+          .form_esquerda{
+            float: left;
+            width: 45%;
+          }
+          .inf_solicitacao{
+              border: 1px solid black;
+              padding: 5px;
+              margin-bottom: 30px;
+          }
+          .div_titulo_form{
+              border-bottom: 1px solid black;
+          }
+          .div1_p{
+              margin-bottom: 20px;
+              display: flex;
+          }
+          .titulo_form{
+              margin: auto;
+              font-size: 14px;
+          }
+          .form_direita{
+            float: right;
+            width: 50%;
+          }
+          .div1_acabamento{
+              display: flex;
+              flex-direction: row;
+
+          }
+          .lado_direito{
+            float: right;
+            display: flex;
+          }
+          .lado_esquerdo{
+
+            float: left;
+            display: flex;
+          }
+          .p_resposta{
+              float:left;
+ 
+          }
+          .p_chave {
+            float:left;
+
+          }
+          .div_dropdown_form_direita{
+              border: 1px solid black;
+              margin-bottom: 15px;
+          }
+
+
+        </style>
+</head>
+<body>
+    <div class="Container">
+        <form class="form_esquerda">
+
+            <div class="inf_solicitacao">
+                <div class="div_titulo_form"><p class="titulo_form"><strong>Iformações da solicitação</strong></p></div>
+
+                <div class="div1_informacao">
+                    <div class="div1_p">
+                        <p>Nome do Solicitante: <%= nomeSolicitante %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Escola solicitante: SENAI 115</p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Telefone: <%= telefone %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Data de solicitação: <%= dataSolicitante %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Data esperada para a entrega: <%= dataEntrega %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="inf_solicitacao">
+                <div class="div_titulo_form"><p class="titulo_form"><strong> Informações/requisição </strong></p></div>
+
+                <div class="div1_informacao">
+                    <div class="div1_p">
+                        <p>Fornecedor: <%= nome_fornecedor %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p >Número: <%= numero %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Nome da requisição: <%= nomeRequisicao %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+
+                    <div class="div1_p">
+                        <p>Páginas: <%= paginas %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Cópias: <%= copias %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                    <div class="div1_p">
+                        <p>Total de páginas: <%= totalPaginas %></p>
+                        <p class="p_resposta"></p>
+                    </div>
+                </div>
+                <div class="div_OBS">
+                    <p class="div_OBS_titulo">Observação:</p>
+                    <textarea style="width: 90%; height: 125px;"><%= observacao %></textarea>
+                </div>
+
+            </div>
+
+        </form>
+
+        <form class="form_direita">
+            <div class="div_dropdown_form_direita">
+
+                <div class="dropdown_form_direita">
+                    <%= nome_departamento %>
+                </div>
+
+            </div>
+
+            <div class="div_dropdown_form_direita">
+
+                <div class="dropdown_form_direita">
+                    cc : <%= nome_centroCusto %>
+                </div>
+
+            </div>
+
+            <div class="inf_solicitacao">
+                <div class="div_titulo_form"><p class="titulo_form"><strong> Acabamento</strong></p></div>
+                <div class="div1_acabamento">
+                    <br>
+
+                    <div class="lado_direito">
+
+                        <label class="container">
+                            <% if(acabamento.includes(4)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                                <span class="checkmark">Encadernação com espiral</span>
+                        </label> <br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(9)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                                <span class="checkmark">Capa em PVC</span>
+                        </label> <br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(8)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                            
+                                <span class="checkmark">Capa em papel 150g/m2</span>
+                        </label> <br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(3)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                                <span class="checkmark">Colorido</span>
+                        </label> <br><br><br><br><br><br>
+
+
+
+                    </div>
+
+                    <div  class="lado_esquerdo">
+
+
+
+                        <label class="container">
+                            <% if(acabamento.includes(1)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                            <span class="checkmark">2 Grampos a cavalo</span>
+                        </label> <br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(2)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                            <span class="checkmark">2 Grampos laterais</span>
+                        </label> <br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(6)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                            <span class="checkmark">Reduzido</span>
+                        </label><br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(7)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                            <span class="checkmark">Preto e branco</span>
+                        </label><br> <br>
+
+                        <label class="container">
+                            <% if(acabamento.includes(5)) { %>
+                                <input class="container_input_checkbox" type="checkbox"  checked class="Encadernação com espiral"  />
+                            <% } else{ %>
+                                <input class="container_input_checkbox" type="checkbox"  class="Encadernação com espiral"  />
+                            <% } %>
+                            <span class="checkmark">Frente e verso</span>
+                        </label><br><br><br>
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="div_titulo_form"><p class="titulo_form"><strong> Formato</strong></p></div>
+
+                <br>
+
+                <div class="div2_acabamento">
+
+                    <div className="div3_acabamento">
+                        <div className="div_checkbox2" >
+
+                            <div class="form-check"  >
+                                <% if(formato == 1) { %>
+                                    <input  class="form-check-input" checked  type="radio" name="exampleRadios2" id="exampleRadios1" value={1} />
+                                <% } else{ %>
+                                    <input  class="form-check-input"  type="radio" name="exampleRadios2" id="exampleRadios1" value={1} />
+                                <% } %>
+                                
+                                <label class="form-check-label" for="exampleRadios1">
+                                    A3
+                                </label>
+                            </div>
+                            <br>
+                            <div class="form-check" >
+                                <% if(formato == 3) { %>
+                                    <input  class="form-check-input" checked  type="radio" name="exampleRadios2" id="exampleRadios1" value={3} />
+                                <% } else{ %>
+                                    <input  class="form-check-input"  type="radio" name="exampleRadios2" id="exampleRadios1" value={3} />
+                                <% } %>
+                                <label class="form-check-label" for="exampleRadios2">
+                                    A5
+                                    </label>
+                            </div>
+                            <br>
+                        </div>
+
+                        <div className="div_checkbox2" >
+                            <div class="form-check">
+                                <% if(formato == 2) { %>
+                                    <input  class="form-check-input" checked  type="radio" name="exampleRadios2" id="exampleRadios1" value={2} />
+                                <% } else{ %>
+                                    <input  class="form-check-input"  type="radio" name="exampleRadios2" id="exampleRadios1" value={2} />
+                                <% } %>
+                                <label class="form-check-label" for="exampleRadios3">
+                                    A4
+                                        </label>
+                            </div>
+                            <br>
+
+                            <div class="form-check" >
+                                <% if(formato == 4) { %>
+                                    <input  class="form-check-input" checked  type="radio" name="exampleRadios2" id="exampleRadios1" value={4} />
+                                <% } else{ %>
+                                    <input  class="form-check-input"  type="radio" name="exampleRadios2" id="exampleRadios1" value={4} />
+                                <% } %>
+                                <label class="form-check-label" for="exampleRadios4">
+                                    Outros (Colocar em OBS )
+                                </label>
+                            </div>
+                            <br>
+
+                        </div>
+                </div>
+
+                <div class="div_titulo_form"><p class="titulo_form"><strong> Suporte </strong></p></div>
+                <br>
+
+                <div class="div3_acabamento">
+
+                    <div class="div_checkbox2">
+
+
+
+                        <div class="form-check" >
+
+                            <% if(suporte == 1) { %>
+                                <input  class="form-check-input"  type="radio" checked name="exampleRadios" id="exampleRadios5" value={1} />
+                            <% } else{ %>
+                                <input  class="form-check-input"  type="radio" name="exampleRadios" id="exampleRadios5" value={1} />
+                            <% } %>
+
+                            
+                            <label class="form-check-label" for="exampleRadios5">
+                                Zipdrive
+                            </label>
+                        </div>
+                        <br>
+                        <div class="form-check" >
+                            <% if(suporte == 2) { %>
+                                <input  class="form-check-input"  type="radio" checked name="exampleRadios" id="exampleRadios5" value={2} />
+                            <% } else{ %>
+                                <input  class="form-check-input"  type="radio" name="exampleRadios" id="exampleRadios5" value={2} />
+                            <% } %>
+                            <label class="form-check-label" for="exampleRadios6">
+                                Papel
+                                </label>
+                        </div>
+                        <br>
+                    </div>
+
+                    <div class="div_checkbox2" >
+                        <div class="form-check" 0 >
+                            <% if(suporte == 3) { %>
+                                <input  class="form-check-input"  type="radio" checked name="exampleRadios" id="exampleRadios5" value={3} />
+                            <% } else{ %>
+                                <input  class="form-check-input"  type="radio" name="exampleRadios" id="exampleRadios5" value={3} />
+                            <% } %>
+                            <label class="form-check-label" for="exampleRadios7">
+                                Email
+                                    </label>
+                        </div>
+                        <br>
+
+                        <div class="form-check" >
+                            <% if(suporte == 4) { %>
+                                <input  class="form-check-input"  type="radio" checked name="exampleRadios" id="exampleRadios5" value={4} />
+                            <% } else{ %>
+                                <input  class="form-check-input"  type="radio" name="exampleRadios" id="exampleRadios5" value={4} />
+                            <% } %>
+                            <label class="form-check-label" for="exampleRadios8">
+                                Outros (Colocar em OBS )
+                            </label>
+                            <br>
+                        </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <div class="div_assinatura">
+                <p class="assinatura">Assinatura ______________________________</p>
+            </div>
+
+
+
+        </form>
+</body>
+</html>

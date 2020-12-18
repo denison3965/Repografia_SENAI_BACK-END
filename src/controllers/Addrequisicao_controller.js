@@ -85,7 +85,7 @@ exports.post = (req, res) => {
 
                         })
                     })
-                    res.status(201).send('Requisição feita com sucesso !')
+                    res.status(201).send({message: 'Requisição feita com sucesso !', numeroReq: numero_requisicao})
                 })
 
             })
