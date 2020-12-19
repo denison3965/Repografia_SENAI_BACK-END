@@ -91,6 +91,7 @@ function verifyJWT(req, res, next) {
 
     //Rota para o feedback
     router.put('/atualizarFeedback', AtualizarFeedback.put)
+    
     //Rota para pegar uma requisicao especifia
     router.get('/pegar-requisicao/:numerorequisicao', PegarRequisicaoPeloNumero_controller.get)
 
@@ -100,6 +101,7 @@ function verifyJWT(req, res, next) {
     //Rota para criar um pdf, e salvar no server 
     router.post('/criar-pdf-requisicao', CriarPDF_controller.post)
 
+    //Rota para pegar o pdf pelo nome do arquivo do pdf
     router.get('/pegar-pdf-requisicao/:pdf', PegarPDF_controller.get)
 
     //autenticação
