@@ -6,10 +6,11 @@ const fs = require('fs')
 
 exports.post = (req, res) => {
     console.log("Olha aquiii")
-    console.log(req.file.filename)
+    console.log(req.file)
     console.log(req.body.id_requisicao)
 
-    if(req.file == undefined) res.send('Nenhum arquivo enviado')
+    // if(req.file.filename == undefined) res.send('Nenhum arquivo enviado')
+
 
     fs.writeFile(`${__dirname}/../../tmp/uploads`, req.file, (err) => {
         if (err) {
@@ -18,21 +19,27 @@ exports.post = (req, res) => {
 
         console.log("Arquivo salvo")
 
-        mysql.getConnection(( err, conn) => {
-            if (err) res.status(500).send(err)
+        if (req.file == undefined) {
+            res.send("Nao ")
+        }
+        if (req.file != undefined){
 
-            conn.query('UPDATE requisicao SET nome_arquivo = ? WHERE id_requisicao = ?;', [req.file.filename, req.body.id_requisicao],
-                (err, result, field) => {
-                    if(err) res.send(err)
+            mysql.getConnection(( err, conn) => {
+                if (err) res.status(500).send(err)
+    
+                conn.query('UPDATE requisicao SET nome_arquivo = ? WHERE id_requisicao = ?;', [req.file.filename, req.body.id_requisicao],
+                    (err, result, field) => {
+                        if(err) res.send(err)
+    
+                        res.send(result)
+                    })
+    
+            })
 
-                    res.send('Arquivo salvo com sucesso')
-                })
+        }
 
-        })
+
     })
-
-
-    res.send("Aqui eu vou receber ,meus arquivos")
 }
 
 
