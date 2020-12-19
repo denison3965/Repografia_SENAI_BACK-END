@@ -31,6 +31,8 @@ const AtualizarFeedback = require('./controllers/AtualizarFeedback_controller')
 const PegarRequisicaoPeloNumero_controller = require('./controllers/PegarRequisicaoPeloNumero_controller')
 const Requisicao_controller = require('./controllers/Requisicao_controller')
 const AtualizarCancelamento_controller = require('./controllers/AtualizarCancelamento_controller')
+const CriarPDF_controller = require('./controllers/CriarPDF_controller')
+const PegarPDF_controller = require('./controllers/PegarPDF_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -97,8 +99,13 @@ function verifyJWT(req, res, next) {
     //router para o cancelamento da requisicao 
     router.put('/AtualizarStatus', AtualizarCancelamento_controller.put)
 
-
+    //Rota para subir os arquivos
     router.post('/file-requisicao', multer(multerConfig).single('file'), Requisicao_controller.post )
+
+    //Rota para criar um pdf, e salvar no server 
+    router.post('/criar-pdf-requisicao', CriarPDF_controller.post)
+
+    router.get('/pegar-pdf-requisicao/:pdf', PegarPDF_controller.get)
 
     //autenticação
     router.post('/login', Login_controller.post)
