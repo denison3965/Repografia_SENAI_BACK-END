@@ -7,21 +7,25 @@ exports.put = (req, res) => {
     mysql.getConnection((err, conn) => {
         if (err) res.status(500).send({ error: err })
 
-        console.log(req.body.status)
-        console.log(req.body.id_requisicao)
-        conn.query(`UPDATE requisicao SET status = ? WHERE id_requisicao = ?`,
+        if(req.body.status === undefined || req.body.id_requisicao === undefined){
+            console.log("Algo deu errado ao cancelar requisicao")
+        }else{
+            conn.query(`UPDATE requisicao SET status = ? WHERE id_requisicao = ?`,
 
-        [req.body.status, req.body.id_requisicao],
-            (error, result, field) => {
-                conn.release()
-                if (error) {
-                    return res.status(500).send({
-                        error: error,
-                        response: null
-                    })
+            [req.body.status, req.body.id_requisicao],
+                (error, result, field) => {
+                    conn.release()
+                    if (error) {
+                        return res.status(500).send({
+                            error: error,
+                            response: null
+                        })
+                    }
+                    res.send('Cancelamento feio com sucesso !!')
                 }
-                res.send('Cancelamento feio com sucesso !!')
-            }
-        )
+            )
+        }
+
+
     })
 }

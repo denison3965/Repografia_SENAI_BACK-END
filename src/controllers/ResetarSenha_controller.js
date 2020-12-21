@@ -27,9 +27,7 @@ exports.put = (req, res) => {
                             response: null
                         })
                     }
-                    res.status(201).send({
-                        mesagem: 'Senha resetada com sucesso',
-                    })
+                    res.status(201).send("Senha restaurada com sucesso !!")
                 }
             )
 
