@@ -33,6 +33,8 @@ const Requisicao_controller = require('./controllers/Requisicao_controller')
 const AtualizarCancelamento_controller = require('./controllers/AtualizarCancelamento_controller')
 const CriarPDF_controller = require('./controllers/CriarPDF_controller')
 const PegarPDF_controller = require('./controllers/PegarPDF_controller')
+const PegarArquivo_controller = require('./controllers/PegarArquivo_controller')
+const PegarRequisicaoPeloIdRequisica_controller = require('./controllers/PegarRequisicaoPeloIdRequisica_controller')
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -93,11 +95,13 @@ function verifyJWT(req, res, next) {
     //Rota para o feedback
     router.put('/atualizarFeedback', AtualizarFeedback.put)
 
+    //router para o cancelamento da requisicao 
+    router.put('/AtualizarStatus', AtualizarCancelamento_controller.put)
+    
     //Rota para pegar uma requisicao especifia
     router.get('/pegar-requisicao/:numerorequisicao', PegarRequisicaoPeloNumero_controller.get)
 
-    //router para o cancelamento da requisicao 
-    router.put('/AtualizarStatus', AtualizarCancelamento_controller.put)
+    router.get('/pegar-uma-requisicao/:idRequisicao', PegarRequisicaoPeloIdRequisica_controller.get)
 
     //Rota para subir os arquivos
     router.post('/file-requisicao', multer(multerConfig).single('file'), Requisicao_controller.post )
@@ -105,7 +109,11 @@ function verifyJWT(req, res, next) {
     //Rota para criar um pdf, e salvar no server 
     router.post('/criar-pdf-requisicao', CriarPDF_controller.post)
 
+    //Rota para pegar o pdf pelo nome do arquivo do pdf
     router.get('/pegar-pdf-requisicao/:pdf', PegarPDF_controller.get)
+
+    //Rota para pegar o arquivo que fooi feito o upload
+    router.get('/pegar-arquivo/:nomeArquivo', PegarArquivo_controller.get)
 
     //autenticação
     router.post('/login', Login_controller.post)
