@@ -9,21 +9,32 @@ exports.put = (req, res) => {
         if (error) res.status(500).send({ error: error })
 
         console.log(req.body.feedback)
-        conn.query(
-            `UPDATE requisicao
-            SET id_feedback     = ?
-            WHERE id_requisicao = ?`, 
+        console.log(req.body.id_requisicao)
+        if(req.body.feedback === undefined){
+            res.send("Houve um erro ao enviar feedback !!")
+        }else{
+            conn.query(
+                `UPDATE requisicao
+                SET id_feedback     = ?
+                WHERE id_requisicao = ?`, 
+                
+                [req.body.feedback, req.body.id_requisicao],
             
-            [req.body.feedback, req.body.id_requisicao],
-        
-            (error, result, field) => {
-            conn.release()
-            if (error) {
-                return res.status(500).send( error )
-            }
+                (error, result, field) => {
+                conn.release()
+                if (error) {
+                    return res.status(500).send({
+                        error: error,
+                        response: null
+                    })
+                    
+                }
+    
+                res.send('Feedback enviado com sucesso !!')
+            })
+        }
 
-            res.send('feedback enviado com sucesso')
-        })
+
 
 
 

@@ -30,6 +30,7 @@ const PegarRequisicao_controller = require('./controllers/PegarRequisicao_contro
 const AtualizarFeedback = require('./controllers/AtualizarFeedback_controller')
 const PegarRequisicaoPeloNumero_controller = require('./controllers/PegarRequisicaoPeloNumero_controller')
 const Requisicao_controller = require('./controllers/Requisicao_controller')
+const AtualizarCancelamento_controller = require('./controllers/AtualizarCancelamento_controller')
 const CriarPDF_controller = require('./controllers/CriarPDF_controller')
 const PegarPDF_controller = require('./controllers/PegarPDF_controller')
 const PegarArquivo_controller = require('./controllers/PegarArquivo_controller')
@@ -93,6 +94,9 @@ function verifyJWT(req, res, next) {
 
     //Rota para o feedback
     router.put('/atualizarFeedback', AtualizarFeedback.put)
+
+    //router para o cancelamento da requisicao 
+    router.put('/AtualizarStatus', AtualizarCancelamento_controller.put)
     
     //Rota para pegar uma requisicao especifia
     router.get('/pegar-requisicao/:numerorequisicao', PegarRequisicaoPeloNumero_controller.get)
