@@ -15,7 +15,7 @@ exports.put = (req, res) => {
         }else{
             conn.query(
                 `UPDATE requisicao
-                SET id_feedback     = ?
+                SET id_feedback  = ?
                 WHERE id_requisicao = ?`, 
                 
                 [req.body.feedback, req.body.id_requisicao],
