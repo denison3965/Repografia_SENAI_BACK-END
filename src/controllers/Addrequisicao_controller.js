@@ -6,8 +6,7 @@ const bcrypt = require('bcrypt');
 
 
 exports.post = (req, res) => {
-    console.log(req.body)
-
+ 
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 
