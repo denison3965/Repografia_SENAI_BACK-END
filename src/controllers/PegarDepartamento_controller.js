@@ -5,7 +5,6 @@ exports.get = (req, res) => {
     
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({error: error})
-        console.log('entrei')
 
         conn.query('SELECT * FROM departamento' , (error, result, field) => {
             conn.release()

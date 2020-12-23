@@ -5,20 +5,12 @@ const bcrypt = require('bcrypt');
 const fs = require('fs')
 
 exports.post = (req, res) => {
-    console.log("Olha aquiii")
-    console.log(req.file)
-    console.log(req.body.id_requisicao)
 
     // if(req.file.filename == undefined) res.send('Nenhum arquivo enviado')
-
-
     fs.writeFile(`${__dirname}/../../tmp/uploads`, req.file, (err) => {
         if (err) {
              console.log(err)
         }
-
-        console.log("Arquivo salvo")
-
         if (req.file == undefined) {
             res.send("Nao ")
         }

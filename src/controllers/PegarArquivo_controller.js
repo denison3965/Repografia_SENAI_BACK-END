@@ -5,8 +5,6 @@ const fs = require('fs')
 var path = require('path');
 
 exports.get = (req, res) => {
-
-    console.log("esta certo")
-    
+ 
     res.sendFile(path.resolve(__dirname + `/../../tmp/uploads/${req.params.nomeArquivo}`));
 }

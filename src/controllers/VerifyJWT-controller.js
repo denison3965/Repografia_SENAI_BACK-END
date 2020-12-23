@@ -14,9 +14,6 @@ app.use(bodyParser.json());
 
 
 exports.get = ( req, res, next ) => {
-    // res.send("Esta tudo funcionando")
-    console.log("Esta tudo funcionando");
-
     mysql.getConnection((err, conn) => {
         
         if (err) res.status(500).send({ error: err })

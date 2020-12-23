@@ -13,7 +13,6 @@ const multerConfig = require('./config/multer')
 const Login_controller = require('./controllers/Login-controller')
 const Logout_controller = require('./controllers/Logout-controller')
 const verifyJWT_controller = require('./controllers/VerifyJWT-controller')
-
 const EditarSenha_controller = require('./controllers/EditarSenha_controller')
 const Funcionarios_controller = require('./controllers/Funcionarios_controller')
 const UserInfo_controller = require('./controllers/UserInfo_controller') 

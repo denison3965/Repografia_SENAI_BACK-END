@@ -8,8 +8,6 @@ exports.put = (req, res) => {
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 
-        console.log(req.body.feedback)
-        console.log(req.body.id_requisicao)
         if(req.body.feedback === undefined){
             res.send("Houve um erro ao enviar feedback !!")
         }else{

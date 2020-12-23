@@ -6,8 +6,6 @@ const mysql = require('../model/db').pool
 
 exports.put = (req, res) => { 
 
-    console.log("Restaurar funcionario controller")
-
     mysql.getConnection((error, conn) => {
         if (error) res.status(500).send({ error: error })
 

@@ -46,7 +46,6 @@ exports.post = (req, res) => {
                     let url_pfd = result
                     let id_requisicao = numero
 
-                    console.log(result)
                     res.send(result)
                 })
             })
