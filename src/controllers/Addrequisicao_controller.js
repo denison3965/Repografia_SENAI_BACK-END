@@ -58,7 +58,7 @@ exports.post = (req, res) => {
                     conn.query(
 
                      
-                        'INSERT INTO requisicao (nome_requisicao ,id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega, id_formato, id_suporte, id_funcionarios, id_departamento, id_fornecedor, status ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
+                        'INSERT INTO requisicao (nome_requisicao ,id_requisicao, nif, num_paginas, num_copias, total_paginas, observacao, data_envio, data_entrega, id_formato, id_suporte, id_funcionarios, id_departamento, id_fornecedor, status, id_feedback ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)',
                         [
                             req.body.nomeRequisicao,
                             numero_requisicao,
@@ -74,7 +74,8 @@ exports.post = (req, res) => {
                             parseInt(Id_funcionario),
                             req.body.departamento,
                             req.body.fornecedor,
-                            req.body.status
+                            req.body.status,
+                            req.body.feedback
                         ],
                     )
 
