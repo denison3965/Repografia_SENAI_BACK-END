@@ -119,6 +119,10 @@ function verifyJWT(req, res, next) {
 
     router.post('/logout', Logout_controller.post)
 
+    router.get('/ping', (req, res) => {
+        res.send("pong");
+    })
+
 
 
 

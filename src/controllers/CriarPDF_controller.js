@@ -38,7 +38,10 @@ exports.post = (req, res) => {
             let nome_centroCusto = result[0].centro_custo
 
             ejs.renderFile(__dirname+"/../views/requisicao.ejs",{nome_centroCusto ,nome_departamento , nomeSolicitante, nif, escolaSolicitante, telefone, dataSolicitante, dataEntrega,fornecedor,nome_fornecedor,numero,nomeRequisicao,paginas,copias,totalPaginas,observacao,departamento,formato,suporte,coordenador,acabamento}, (err, html) => {
-                if(err) console.log(err)
+                if(err) {
+                    console.log(err)
+                    console.log("estou aqui")
+                }
         
                 pdf.create(html,{}).toFile(__dirname + `../../../tmp/PDF/${numero}-requisicao.pdf`,(err, result) => {
                     if (err) console.log("Um erro aconteceu" + err)

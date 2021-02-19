@@ -6,10 +6,13 @@ const fs = require('fs')
 
 exports.post = (req, res) => {
 
+    console.log(req.file)
+
     // if(req.file.filename == undefined) res.send('Nenhum arquivo enviado')
     fs.writeFile(`${__dirname}/../../tmp/uploads`, req.file, (err) => {
         if (err) {
              console.log(err)
+             console.log("ESTOU AQUIII")
         }
         if (req.file == undefined) {
             res.send("Nao ")

@@ -7,6 +7,7 @@ require('dotenv').config()
 const bodyParser = require('body-parser')
 const db = require ('./model/db')
 const morgan = require("morgan")
+const path = require('path');
 
 //Configuration
 app.use(bodyParser.json());
@@ -15,6 +16,7 @@ app.use(morgan("dev"))
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 
 //Rotas
 app
