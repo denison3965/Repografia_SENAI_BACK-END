@@ -26,6 +26,7 @@ exports.post = (req, res) => {
 
         conn.query('SELECT id_requisicao from requisicao ORDER BY id_requisicao DESC limit 1',
             async (error, result, field) => {
+                conn.release()
 
                 let num = result
 
@@ -52,6 +53,7 @@ exports.post = (req, res) => {
                 }
 
                 conn.query('SELECT id_funcionarios FROM funcionarios WHERE nif = ?', [req.body.nif], (error, resultado, field) => {
+                    conn.release()
                     let Id_funcionario = resultado[0].id_funcionarios
 
                     conn.query(
@@ -83,6 +85,7 @@ exports.post = (req, res) => {
 
                         conn.query('INSERT INTO acabamento_requisicao (id_acabamento, id_requisicao) VALUES (?, ?)', [element ,numero_requisicao],
                         (error, result, field) => {
+                            conn.release()
 
                         })
                     })

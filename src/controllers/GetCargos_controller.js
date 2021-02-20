@@ -9,6 +9,7 @@ exports.get = (req, res) => {
         if (err) res.status(500).send({error: err})
 
         conn.query('SELECT * FROM cargo_funcionario',(err, result, field) => {
+            conn.release()
             res.send(result)
         })
     })

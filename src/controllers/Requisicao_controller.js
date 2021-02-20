@@ -24,6 +24,7 @@ exports.post = (req, res) => {
     
                 conn.query('UPDATE requisicao SET nome_arquivo = ? WHERE id_requisicao = ?;', [req.file.filename, req.body.id_requisicao],
                     (err, result, field) => {
+                        conn.release()
                         if(err) res.send(err)
     
                         res.send(result)
