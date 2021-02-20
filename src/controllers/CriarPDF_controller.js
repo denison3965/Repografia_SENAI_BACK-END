@@ -33,6 +33,7 @@ exports.post = (req, res) => {
         if (err) res.send(err)
 
         conn.query("SELECT * FROM departamento WHERE id_departamento = ?",[departamento], (err, result, field) => {
+            conn.release()
 
             let nome_departamento = result[0].nome_departamento
             let nome_centroCusto = result[0].centro_custo

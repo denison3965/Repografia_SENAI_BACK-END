@@ -17,6 +17,7 @@ exports.put = (req, res) => {
                 [req.body.nif],
 
                 async (error, resultado, field) => {
+                    conn.release()
                     if(error) {
                         return res.status(500).send({
                             error: error,

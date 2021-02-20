@@ -1,11 +1,10 @@
 const express = require('express')
 const router = express.Router()
-const app = express();
+
 
 
 require("dotenv-safe").config();
 const jwt = require('jsonwebtoken');
-const mysql = require('./model/db').pool
 const multer = require('multer')
 const multerConfig = require('./config/multer')
 
@@ -34,6 +33,8 @@ const CriarPDF_controller = require('./controllers/CriarPDF_controller')
 const PegarPDF_controller = require('./controllers/PegarPDF_controller')
 const PegarArquivo_controller = require('./controllers/PegarArquivo_controller')
 const PegarRequisicaoPeloIdRequisica_controller = require('./controllers/PegarRequisicaoPeloIdRequisica_controller')
+
+const Pong_controller = require('./controllers/Pong_controller');
 
 // Verificar o JWT
 function verifyJWT(req, res, next) {
@@ -119,9 +120,7 @@ function verifyJWT(req, res, next) {
 
     router.post('/logout', Logout_controller.post)
 
-    router.get('/ping', (req, res) => {
-        res.send("pong");
-    })
+    router.get('/ping', Pong_controller.get)
 
 
 

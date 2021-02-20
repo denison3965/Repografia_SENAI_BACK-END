@@ -11,6 +11,7 @@ exports.get = (req, res ) => {
         }
 
         conn.query('SELECT * FROM fornecedor', (err, result, field) => {
+            conn.release()
             if (err) {
                 res.status(500).send(err)
             }
