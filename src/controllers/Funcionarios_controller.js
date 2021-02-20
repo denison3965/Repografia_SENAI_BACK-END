@@ -19,7 +19,6 @@ exports.post = (req, res) => {
             [req.body.nif],
 
             (error, resultado, field) => {
-                conn.release()
                 if (error) {
                     return res.status(500).send({
                         error: error,
