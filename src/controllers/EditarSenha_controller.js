@@ -42,7 +42,10 @@ exports.put = (req, res) => {
                                   [hash, req.body.nif],
                             
                                   (error, resultado, field) => {
+<<<<<<< HEAD
                                    
+=======
+>>>>>>> 84ff56797f551c25f7b89f62c123206ab5c07b52
                                    if(error) {
                                        return res.status(500).send({
                                            error: error,
