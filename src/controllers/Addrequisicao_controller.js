@@ -28,6 +28,8 @@ exports.post = (req, res) => {
             async (error, result, field) => {
                 conn.release()
 
+               
+
                 let num = result
 
                 try {
@@ -53,7 +55,7 @@ exports.post = (req, res) => {
                 }
 
                 conn.query('SELECT id_funcionarios FROM funcionarios WHERE nif = ?', [req.body.nif], (error, resultado, field) => {
-                    conn.release()
+                    
                     let Id_funcionario = resultado[0].id_funcionarios
 
                     conn.query(
@@ -78,14 +80,17 @@ exports.post = (req, res) => {
                             req.body.status,
                             req.body.feedback
                         ],
-                    )
+                        (error, result, field) => {
+                            
+
+                        })
 
                     //Adicionando na tabela de acabamento os acabamentos pedido pela requisicao
                      req.body.acabamento.map((element) => {
 
                         conn.query('INSERT INTO acabamento_requisicao (id_acabamento, id_requisicao) VALUES (?, ?)', [element ,numero_requisicao],
                         (error, result, field) => {
-                            conn.release()
+                            
 
                         })
                     })

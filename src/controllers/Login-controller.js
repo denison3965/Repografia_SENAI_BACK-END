@@ -21,7 +21,7 @@ exports.post = (req, res, next) => {
         //Comparando se a senha bate com a senha gravada no banco de dados
         conn.query('SELECT * FROM funcionarios WHERE nif = ?',[req.body.nif] ,
             (err, result ) => {
-                conn.release()
+                conn.release();
 
                 if (err) {
                     return res.status(500).send({
