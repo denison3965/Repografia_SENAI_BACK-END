@@ -12,7 +12,6 @@ exports.post = (req, res) => {
     fs.writeFile(`${__dirname}/../../tmp/uploads`, req.file, (err) => {
         if (err) {
              console.log(err)
-             console.log("ESTOU AQUIII")
         }
         if (req.file == undefined) {
             res.send("Nao ")
