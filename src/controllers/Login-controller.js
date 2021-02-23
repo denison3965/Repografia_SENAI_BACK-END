@@ -38,8 +38,10 @@ exports.post = (req, res, next) => {
                 let result_password = bcrypt.compareSync(req.body.password, result[0].senha)
                 console.log(req.body.nif + " " + result[0].nif)
 
+                let result_situacao = (req.body.situacao, result[0].situacao)
+
                 //esse teste abaixo deve ser feito no seu banco de dados
-                if(parseInt(req.body.nif) == parseInt(result[0].nif)  && result_password == true){
+                if(parseInt(req.body.nif) == parseInt(result[0].nif) && result_password == true && result_situacao == 'ativo'){
                 //auth ok
                 const nif = result[0].nif; //esse id viria do banco de dados
                 const isAd = result[0].administrativo;
