@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const mysql = require('../model/db').pool
 const bcrypt = require('bcrypt');
 
+//Pegando a data de hoje em milisegundos
+var dataDeHoje = Date.now()
 
 exports.get = (req , res) => {
     mysql.getConnection((error, conn) => {
@@ -28,7 +30,6 @@ exports.get = (req , res) => {
 
             console.log(datahoje)
         })
-       
     })
 }
-
+console.log(dataDeHoje)
