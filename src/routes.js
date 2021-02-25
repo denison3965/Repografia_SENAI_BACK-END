@@ -33,6 +33,7 @@ const CriarPDF_controller = require('./controllers/CriarPDF_controller')
 const PegarPDF_controller = require('./controllers/PegarPDF_controller')
 const PegarArquivo_controller = require('./controllers/PegarArquivo_controller')
 const PegarRequisicaoPeloIdRequisica_controller = require('./controllers/PegarRequisicaoPeloIdRequisica_controller')
+const BloquearRequisicao_controller = require('./controllers/BloquearRequisicao_cotroller')
 
 
 // Verificar o JWT
@@ -119,6 +120,8 @@ function verifyJWT(req, res, next) {
 
     router.post('/logout', Logout_controller.post)
 
+    //Rota para bloquear Requisição
+    router.get('/bloquear-requisicao/:nif', BloquearRequisicao_controller.get)
 
 
 
