@@ -21,8 +21,8 @@ exports.get = (req , res) => {
                     response: null
                 })
             }
-            res.send(result)       
-            console.log(result)
+
+            res.send(result)
         })
        
     })

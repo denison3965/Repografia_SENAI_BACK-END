@@ -21,7 +21,8 @@ exports.get = (req , res) => {
                 })
             }
 
-            res.send(result[0])
+            res.send(result)
+            
         })
     })
 }
