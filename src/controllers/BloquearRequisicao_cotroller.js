@@ -40,9 +40,8 @@ exports.get = (req, res) => {
                     //   console.log(FormataStringData("13/3/2021"));
 
                     let data = new Date(element.data_entrega);
-                    let dataFormatada = (data.getFullYear() + "-" + ((data.getMonth() + 1)) + "-" + (data.getDate() )) ;                 
+                    let dataFormatada = (data.getFullYear() + "/" + ((data.getMonth() + 1)) + "/" + (data.getDate() )) ;                 
                     console.log(dataFormatada)
-                    
 
 
                     //conversão do dataEntrega para milisegundos
