@@ -36,6 +36,8 @@ const PegarRequisicaoPeloIdRequisica_controller = require('./controllers/PegarRe
 const DadosGraficos_controller = require('./controllers/DadosGraficos_controller')
 const Top5Departamentos_controller = require('./controllers/Top5Departamentos_controller')
 const BloquearRequisicao_controller = require('./controllers/BloquearRequisicao_cotroller')
+const Top5Funcionarios_controller = require('./controllers/Top5Funcionarios_controller')
+const DadosGraficoFuncionario_controller = require('./controllers/DadosGraficoFuncionario_controller')
 
 
 // Verificar o JWT
@@ -120,8 +122,13 @@ function verifyJWT(req, res, next) {
     //Rota para enviar os departamentos com os custos de folhas de cada um
     router.get('/dados-graficos', DadosGraficos_controller.get)
 
+    router.get('/dados-grafico-funcionario', DadosGraficoFuncionario_controller.get)
+
     //Rota para enviar os top 5 departamentos que mais gastaram com folhas
     router.get('/pegar-top5-departamentos', Top5Departamentos_controller.get)
+
+    //Rota para pegar os 5 funcionários que mais gastaram com folhas
+    router.get('/pegar-top5-funcionarios', Top5Funcionarios_controller.get)
 
     //autenticação
     router.post('/login', Login_controller.post)
