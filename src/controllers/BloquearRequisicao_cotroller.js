@@ -23,30 +23,16 @@ exports.get = (req, res) => {
                     })
                 }
 
-                let requisicao = result
-                var feedbacks = requisicao.map((element) => {
-                    //Funcao para converter data em PT/BR para ENG
-                    // let data = element.data_entrega
-                    // console.log(data)
+                   //Função para converter data em PT/BR para ENG
+                   function dataToEN(date){
+                    return date.split('/').reverse().join('-')
+                   }
 
-                    // function FormataStringData(data) {
-                    //     var dia  = data.split("/");
-                    //     var mes  = data.split("/");
-                    //     var ano  = data.split("/");
-                      
-                    //     return ano + '-' + ("0"+mes).slice(-2) + '-' + ("0"+dia).slice(-2);
-                    //     // Utilizo o .slice(-2) para garantir o formato com 2 digitos.
-                    //   }
-                    //   console.log(FormataStringData("13/3/2021"));
-
-                    let data = new Date(element.data_entrega);
-                    let dataFormatada = (data.getFullYear() + "-" + ((data.getMonth() + 1)) + "-" + (data.getDate() )) ;                 
-                    console.log(dataFormatada)
-                    
-
+                    let requisicao = result
+                    requisicao.map((element) => {
 
                     //conversão do dataEntrega para milisegundos
-                    let dataEntrega = Date.parse((data))
+                    let dataEntrega = Date.parse(dataToEN(String(element.data_entrega)))
                     console.log(dataEntrega)
 
                     // if (datahoje >= element.dataEntrega) {
@@ -60,7 +46,7 @@ exports.get = (req, res) => {
 
                 })
 
-                console.log(datahoje)
+                // console.log(datahoje)
                 console.log(requisicao)
             })
     })
