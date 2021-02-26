@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/denison3965/Repografia_SENAI_BACK-END#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

@@ -1,7 +1,7 @@
 
 require("dotenv-safe").config();
 const mysql = require('../model/db').pool
-const bcrypt = require('bcrypt');
+
 
 exports.get = ( req, res) => {
     

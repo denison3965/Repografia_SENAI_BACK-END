@@ -33,6 +33,8 @@ const CriarPDF_controller = require('./controllers/CriarPDF_controller')
 const PegarPDF_controller = require('./controllers/PegarPDF_controller')
 const PegarArquivo_controller = require('./controllers/PegarArquivo_controller')
 const PegarRequisicaoPeloIdRequisica_controller = require('./controllers/PegarRequisicaoPeloIdRequisica_controller')
+const DadosGraficos_controller = require('./controllers/DadosGraficos_controller')
+const Top5Departamentos_controller = require('./controllers/Top5Departamentos_controller')
 const BloquearRequisicao_controller = require('./controllers/BloquearRequisicao_cotroller')
 
 
@@ -114,6 +116,12 @@ function verifyJWT(req, res, next) {
 
     //Rota para pegar o arquivo que fooi feito o upload
     router.get('/pegar-arquivo/:nomeArquivo', PegarArquivo_controller.get)
+
+    //Rota para enviar os departamentos com os custos de folhas de cada um
+    router.get('/dados-graficos', DadosGraficos_controller.get)
+
+    //Rota para enviar os top 5 departamentos que mais gastaram com folhas
+    router.get('/pegar-top5-departamentos', Top5Departamentos_controller.get)
 
     //autenticação
     router.post('/login', Login_controller.post)
