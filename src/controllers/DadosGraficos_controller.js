@@ -26,6 +26,9 @@ exports.get = (req, res) => {
 
                 var departamentos = data
 
+                /* 
+                *  PEGANDO QUANTIDADES DE FOLHAS GASTA POR DEPARTAMENTO - GRAFICO 1
+                */
                 requisicoes.map(async (req) => {
                     switch (req.id_departamento) {
                         case 1:
