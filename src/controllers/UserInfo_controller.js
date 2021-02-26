@@ -22,6 +22,7 @@ exports.get = (req , res) => {
             }
 
             res.send(result[0])
+            
         })
     })
 }
