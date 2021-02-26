@@ -46,14 +46,14 @@ exports.get = (req, res) => {
 
 
                     //conversão do dataEntrega para milisegundos
-                    // let dataEntrega = Date.parse(dateToEN(element.data_entrega))
-                    // console.log(dataEntrega)
+                    let dataEntrega = Date.parse((data))
+                    console.log(dataEntrega)
 
-                    if (datahoje >= element.dataEntrega) {
-                        console.log(element.dataEntrega)
-                    } else {
-                        console.log("OLá")
-                    }
+                    // if (datahoje >= element.dataEntrega) {
+                    //     console.log(element.dataEntrega)
+                    // } else {
+                    //     console.log("OLá")
+                    // }
                 })
                 res.status(201).send({
                     mesagem: 'teste oi',
