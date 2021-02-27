@@ -24,6 +24,7 @@ exports.get = (req, res) => {
                 }
 
                     let pendencias = []
+
                    //Função para converter data em PT/BR para ENG
                    function dataToEN(date){
                     return date.split('/').reverse().join('-')
@@ -36,7 +37,7 @@ exports.get = (req, res) => {
                     //conversão do dataEntrega para milisegundos
                     let dataEntrega = Date.parse(dataToEN(String(element.data_entrega)))
 
-                    if (datahoje >= element.dataEntrega && element.feedback == 'Em espera'){
+                    if (datahoje >= dataEntrega && element.feedback == 'Em espera'){
 
                      pendencias.push(element) 
                      
@@ -44,12 +45,12 @@ exports.get = (req, res) => {
                         return
                     }                   
                 })
-                console.log(pendencias)
-                res.status(201).send({
-                    mesagem: 'teste oi',
-                })
 
-                console.log(requisicao)
+                if(pendencias.length > 0){
+                    res.send(false)
+                } else{
+                    res.send(true)
+                }
             })
     })
 }
