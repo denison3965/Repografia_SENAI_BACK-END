@@ -120,6 +120,18 @@ exports.get = (req, res) => {
 
                 })
 
+                if (top5.length < 5) {
+                    for (let i = top5.length; i < 5; i++) {
+                        top5.push({
+                            "id_departamento" : "",
+                            "nome_departamento" : "",
+                            "centro_custo" : "",
+                            "folhas_usadas" : 0
+                        })
+                        
+                    }
+                }
+
                 res.send(top5)
 
             })
