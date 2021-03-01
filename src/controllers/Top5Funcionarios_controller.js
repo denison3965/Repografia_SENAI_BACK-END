@@ -51,18 +51,24 @@ exports.get = (req, res) => {
 
                let top5 = []
 
-                funcionarios.map((element) => {
-                    var aux = 0
-                    funcionarios.map((element2) => {
-                        if (element.folhas_usadas > element2.folhas_usadas) {
-                            aux++
-                        }
-                    })
+               funcionarios.map(async (element) => {
+                let aux = 0
 
-                    if (aux > 5) {
-                        top5.push(element)
+                funcionarios.map((element2) => {
+                    if (element.folhas_usadas <= element2.folhas_usadas) {
+                        aux++
                     }
                 })
+
+                if (aux <= 5) {
+                    await top5.push(element)
+                } else {
+                    return
+                }
+
+                aux = 0
+
+            })
 
                 if (top5.length < 5) {
                     for (let i = top5.length; i < 5; i++) {
