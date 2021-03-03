@@ -120,15 +120,15 @@ function verifyJWT(req, res, next) {
     router.get('/pegar-arquivo/:nomeArquivo', PegarArquivo_controller.get)
 
     //Rota para enviar os departamentos com os custos de folhas de cada um
-    router.get('/dados-graficos', DadosGraficos_controller.get)
+    router.get('/dados-graficos/:de/:ate', DadosGraficos_controller.get)
 
-    router.get('/dados-grafico-funcionario', DadosGraficoFuncionario_controller.get)
+    router.get('/dados-grafico-funcionario/:de/:ate', DadosGraficoFuncionario_controller.get)
 
     //Rota para enviar os top 5 departamentos que mais gastaram com folhas
-    router.get('/pegar-top5-departamentos', Top5Departamentos_controller.get)
+    router.get('/pegar-top5-departamentos/:de/:ate', Top5Departamentos_controller.get)
 
     //Rota para pegar os 5 funcionários que mais gastaram com folhas
-    router.get('/pegar-top5-funcionarios', Top5Funcionarios_controller.get)
+    router.get('/pegar-top5-funcionarios/:de/:ate', Top5Funcionarios_controller.get)
 
     //autenticação
     router.post('/login', Login_controller.post)
