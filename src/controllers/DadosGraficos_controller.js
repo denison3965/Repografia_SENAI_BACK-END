@@ -26,7 +26,7 @@ exports.get = (req, res) => {
             
             if (de != 'null' || ate != 'null') {
                 
-                console.log("ESTOU AQUI DENTRO")
+            
                 
                 requisicoes_filtrada = requisicoes.filter((element) => {
 
