@@ -105,12 +105,12 @@ exports.get = (req, res) => {
                     let aux = 0
 
                     departamentos.map((element2) => {
-                        if (element.folhas_usadas < element2.folhas_usadas) {
+                        if (element.folhas_usadas <= element2.folhas_usadas) {
                             aux++
                         }
                     })
 
-                    if (aux < 5) {
+                    if (aux <= 5) {
                         await top5.push(element)
                     } else {
                         return
