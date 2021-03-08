@@ -39,8 +39,12 @@ exports.get = (req, res) => {
 
                     if (datahoje >= dataEnvio + 4000 && element.feedback == 'Em espera'){
 
-                     pendencias.push(element) 
-                     
+                        if (element.status == 'ativo') {
+                            pendencias.push(element)
+                        }else{
+                            return
+                        }
+
                     } else {
                         return
                     }                   
