@@ -47,9 +47,14 @@ exports.get = (req, res) => {
                 })
 
                 if(pendencias.length > 0){
-                    res.send(false)
+                    res.send({
+                        'res' : false,
+                        'pendencias' : pendencias
+                    })
                 } else{
-                    res.send(true)
+                    res.send({
+                        'res' : true
+                    })
                 }
             })
     })
