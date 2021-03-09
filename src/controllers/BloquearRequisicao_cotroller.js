@@ -37,7 +37,7 @@ exports.get = (req, res) => {
                     //conversão do dataEntrega para milisegundos
                     let dataEnvio = Date.parse(dataToEN(String(element.data_envio)))
 
-                    if (datahoje >= dataEnvio + 4000 && element.feedback == 'Em espera'){
+                    if (datahoje >= dataEnvio + 604800000 && element.feedback == 'Em espera'){
 
                         if (element.status == 'ativo') {
                             pendencias.push(element)
@@ -51,9 +51,15 @@ exports.get = (req, res) => {
                 })
 
                 if(pendencias.length > 0){
-                    res.send(false)
+                    res.send({
+                        'res' : false,
+                        'pendencias' : pendencias
+                    })
                 } else{
-                    res.send(true)
+                    res.send({
+                        'res' : true,
+                        'pendencias' : pendencias
+                    })
                 }
             })
     })
