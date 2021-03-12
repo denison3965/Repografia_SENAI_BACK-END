@@ -12,7 +12,7 @@ exports.post = (req, res) => {
 
         //Verificando se os campos necessarios estão preenchidos 
         if(req.body.nomeRequisicao === null || req.body.paginas === null || req.body.copias === null || req.body.departamento === null || req.body.formato === null || req.body.suporte === null){
-            res.send("Obs: Preencha os campos necessarios: Nome da requisição, número de páginas, número de copias, endereço do departamento, formato ou suporte !!")
+            res.send("Obs: Preencha os campos necessarios: Nome da requisição, número de páginas, número de cópias, endereço do departamento, formato ou suporte !!")
          }
          else{
             
