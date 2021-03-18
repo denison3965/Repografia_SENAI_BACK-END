@@ -36,7 +36,6 @@ exports.post = (req, res, next) => {
                 }
 
                 let result_password = bcrypt.compareSync(req.body.password, result[0].senha)
-                console.log(req.body.nif + " " + result[0].nif)
 
                 let result_situacao = (req.body.situacao, result[0].situacao)
 

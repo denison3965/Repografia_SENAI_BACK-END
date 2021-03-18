@@ -10,7 +10,6 @@ exports.post = (req, res) => {
     // if(req.file.filename == undefined) res.send('Nenhum arquivo enviado')
     fs.writeFile(`${__dirname}/../../tmp/uploads`, req.file, (err) => {
         if (err) {
-             console.log(err)
         }
         if (req.file == undefined) {
             res.send("Nao ")

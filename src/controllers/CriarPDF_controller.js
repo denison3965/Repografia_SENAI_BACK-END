@@ -5,7 +5,6 @@ const mysql = require('../model/db').pool
 
 exports.post = (req, res) => {
 
-    console.log(req.body)
 
     const nomeSolicitante = req.body.nomeSolicitante
     const nif = req.body.nif
@@ -41,7 +40,6 @@ exports.post = (req, res) => {
             ejs.renderFile(__dirname+"/../views/requisicao.ejs",{nome_centroCusto ,nome_departamento , nomeSolicitante, nif, escolaSolicitante, telefone, dataSolicitante, dataEntrega,fornecedor,nome_fornecedor,numero,nomeRequisicao,paginas,copias,totalPaginas,observacao,departamento,formato,suporte,coordenador,acabamento}, (err, html) => {
                 if(err) {
                     console.log(err)
-                    console.log("estou aqui")
                 }
         
                 pdf.create(html,{}).toFile(__dirname + `../../../tmp/PDF/${numero}-requisicao.pdf`,(err, result) => {
